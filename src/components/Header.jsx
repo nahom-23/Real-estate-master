@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import { useLocation, useNavigate } from "react-router";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 export default function Header() {
   const location = useLocation();
+  const [pagechanger, setpagechanger] = useState("sign in");
+  const auth = getAuth();
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setpagechanger("profile");
+      } else {
+        setpagechanger("sign-in");
+      }
+    });
+  }, [auth]);
+
   const navigate = useNavigate();
   function pathMath(route) {
     if (route === location.pathname) {
@@ -40,11 +53,12 @@ export default function Header() {
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[5px] border-b-transparent  ${
-                pathMath("/sign-in") && "text-black border-b-blue-500"
+                (pathMath("/sign-in") || pathMath("/profile")) &&
+                "text-black border-b-blue-500"
               }`}
-              onClick={() => navigate("/sign-in")}
+              onClick={() => navigate(`/profile`)}
             >
-              Sign in
+              {pagechanger}
             </li>
           </ul>
         </div>
