@@ -97,26 +97,20 @@ export default function Signup() {
               )}
             </div>
             <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg">
-              <p className="mb-6">
+              <p className="mb-6 text-grayish text-sm">
                 Have an account?
-                <Link
-                  to="/sign-in"
-                  className="text-red-600 hover:text-red-700 transition duration-200 ease-in-out ml-1"
-                >
+                <Link to="/sign-in" className="text-black text-md ml-1">
                   Sign-in
                 </Link>
               </p>
-              <p>
-                <Link
-                  to="/forgot-password"
-                  className="text-blue-600 hover:text-blue-700 transition duration-200 ease-in-out "
-                >
+              <p className="mb-6 text-grayish text-sm">
+                <Link to="/forgot-password" className="text-grayish ">
                   Forgot Password?
                 </Link>
               </p>
             </div>
             <button
-              className="w-full bg-blue-600 text-white px-7 py-3 text-sm font-medium uppercase  rounded shadow-md hover:bg-blue-700 transition duration-150 ease-in-out hover:shadow-lg active:bg-blue-800"
+              className="w-full bg-Black text-white px-7 py-3 text-sm font-medium uppercase  rounded shadow-md"
               type="submit"
             >
               Sign Up
